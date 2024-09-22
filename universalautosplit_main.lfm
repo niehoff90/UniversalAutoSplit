@@ -1,0 +1,84 @@
+object FormMain: TFormMain
+  Left = 108
+  Height = 360
+  Top = 153
+  Width = 320
+  BorderStyle = bsSingle
+  Caption = 'FormMain'
+  ClientHeight = 360
+  ClientWidth = 320
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  LCLVersion = '2.2.4.0'
+  object ImagePreview: TImage
+    Left = 0
+    Height = 240
+    Top = 120
+    Width = 320
+    Align = alBottom
+  end
+  object SpinEditWidth: TSpinEdit
+    Left = 8
+    Height = 34
+    Top = 48
+    Width = 150
+    MaxValue = 6400
+    MinValue = 320
+    TabOrder = 0
+    Value = 1280
+  end
+  object SpinEditHeight: TSpinEdit
+    Left = 164
+    Height = 34
+    Top = 48
+    Width = 150
+    MaxValue = 3600
+    MinValue = 180
+    TabOrder = 1
+    Value = 960
+  end
+  object SpinEditTop: TSpinEdit
+    Left = 164
+    Height = 34
+    Top = 8
+    Width = 150
+    MaxValue = 6400
+    TabOrder = 2
+  end
+  object SpinEditLeft: TSpinEdit
+    Left = 8
+    Height = 34
+    Top = 8
+    Width = 150
+    MaxValue = 6400
+    TabOrder = 3
+  end
+  object CheckBoxPreview: TCheckBox
+    Left = 8
+    Height = 23
+    Top = 88
+    Width = 79
+    Caption = 'Preview'
+    Checked = True
+    State = cbChecked
+    TabOrder = 4
+  end
+  object UpDownSplitter: TUpDown
+    Left = 104
+    Height = 23
+    Top = 88
+    Width = 210
+    Min = 0
+    OnClick = UpDownSplitterClick
+    Orientation = udHorizontal
+    Position = 0
+    TabOrder = 5
+  end
+  object TimerScreenshot: TTimer
+    Interval = 1
+    OnTimer = TimerScreenshotTimer
+    Left = 608
+    Top = 8
+  end
+end
