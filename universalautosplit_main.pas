@@ -16,6 +16,7 @@ type
   TFormMain = class(TForm)
     CheckBoxPreview: TCheckBox;
     ImagePreview: TImage;
+    LabelInfo: TLabel;
     SpinEditLeft: TSpinEdit;
     SpinEditWidth: TSpinEdit;
     SpinEditHeight: TSpinEdit;
@@ -29,9 +30,6 @@ type
     procedure UpDownSplitterClick(Sender: TObject; Button: TUDBtnType);
   private
     Splitter: TSplitter;
-
-    //test: TFPCustomImage;
-    maxd: double;
 
     procedure TakeScreenshot(const Image: TFPCustomImage; const Rect: TRect);
     function NewImage: TLazIntfImage;
@@ -73,16 +71,10 @@ begin
     Preview.Free;
   end;
 
-  //startTime := GetTickCount;
-
-  FormMain.Caption := Splitter.CurrentElement.Title;
-  FormMain.Caption := FormMain.Caption + ' / ' +
-    FloatToStrF(Splitter.Process(Screenshot), ffFixed, 0, 3);
-
-  //cd := CalculateImageSimilarity(test, Screenshot);
-  //if cd > maxd then maxd := cd;
-  FormMain.Caption := FormMain.Caption + ' / ' +
+  LabelInfo.Caption := FloatToStrF(Splitter.Process(Screenshot), ffFixed, 0, 3);
+  LabelInfo.Caption := LabelInfo.Caption + ' / ' +
     IntToStr(GetTickCount - startTime) + 'ms';
+  LabelInfo.Caption := LabelInfo.Caption + ' / ' + Splitter.CurrentElement.Title;
 
   Screenshot.Free;
   Application.ProcessMessages;
@@ -100,18 +92,12 @@ end;
 
 procedure TFormMain.FormCreate(Sender: TObject);
 begin
-  maxd := 0.0;
   Splitter := TSplitter.Create('UniversalAutoSplit.ini');
   UpDownSplitter.Max := Splitter.ElementCount - 1;
-
-  //test := TFPMemoryImage.Create(0, 0);
-  //test.LoadFromFile('conker_START.bmp');
 end;
 
 procedure TFormMain.FormDestroy(Sender: TObject);
 begin
-  //test.Free;
-
   Splitter.Free;
 end;
 

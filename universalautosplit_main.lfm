@@ -1,11 +1,11 @@
 object FormMain: TFormMain
-  Left = 108
-  Height = 360
-  Top = 153
+  Left = 322
+  Height = 380
+  Top = 215
   Width = 320
   BorderStyle = bsSingle
-  Caption = 'FormMain'
-  ClientHeight = 360
+  Caption = 'UniveralAutoSplit'
+  ClientHeight = 380
   ClientWidth = 320
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -14,7 +14,7 @@ object FormMain: TFormMain
   object ImagePreview: TImage
     Left = 0
     Height = 240
-    Top = 120
+    Top = 140
     Width = 320
     Align = alBottom
   end
@@ -57,7 +57,7 @@ object FormMain: TFormMain
   object CheckBoxPreview: TCheckBox
     Left = 8
     Height = 23
-    Top = 88
+    Top = 112
     Width = 79
     Caption = 'Preview'
     Checked = True
@@ -67,13 +67,21 @@ object FormMain: TFormMain
   object UpDownSplitter: TUpDown
     Left = 104
     Height = 23
-    Top = 88
+    Top = 112
     Width = 210
     Min = 0
     OnClick = UpDownSplitterClick
     Orientation = udHorizontal
     Position = 0
     TabOrder = 5
+  end
+  object LabelInfo: TLabel
+    Left = 8
+    Height = 17
+    Top = 88
+    Width = 64
+    Caption = 'LabelInfo'
+    ParentColor = False
   end
   object TimerScreenshot: TTimer
     Interval = 1
