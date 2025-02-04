@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Interfaces,
   LCLType, LCLIntf, FPImage, IntfGraphics, Spin, StdCtrls, ComCtrls, GraphType,
-  UAS_GraphicUtils, UAS_SplitterLogic;
+  UAS_ScreenUtils, UAS_GraphicUtils, UAS_SplitterLogic;
 
 type
 
@@ -31,7 +31,6 @@ type
   private
     Splitter: TSplitter;
 
-    procedure TakeScreenshot(const Image: TFPCustomImage; const Rect: TRect);
     function NewImage: TLazIntfImage;
   public
 
@@ -99,23 +98,6 @@ end;
 procedure TFormMain.FormDestroy(Sender: TObject);
 begin
   Splitter.Free;
-end;
-
-procedure TFormMain.TakeScreenshot(const Image: TFPCustomImage; const Rect: TRect);
-var
-  ScreenDC: HDC;
-  FullScreenshot: TLazIntfImage;
-begin
-  FullScreenshot := TLazIntfImage.Create(Screen.Width, Screen.Height);
-
-  ScreenDC := GetDC(0);
-  FullScreenshot.LoadFromDevice(ScreenDC);
-  ReleaseDC(0, ScreenDC);
-
-  Image.Width := Rect.Right - Rect.Left;
-  Image.Height := Rect.Bottom - Rect.Top;
-  CropImage(FullScreenshot, Rect, Image);
-  FullScreenshot.Free;
 end;
 
 function TFormMain.NewImage: TLazIntfImage;
